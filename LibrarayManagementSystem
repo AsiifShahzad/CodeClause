@@ -1,0 +1,52 @@
+class Book:
+    def __init__(self, title, authorName, isbnNumber):
+        self.title = title
+        self.authorName = authorName
+        self.isbn = isbnNumber
+
+class Library:
+    def __init__(self):
+        self.books = []
+
+    def addBook(self, book):
+        self.books.append(book)
+
+    def displayBooks(self):
+        if not self.books:
+            print("No books in the library\n")
+        else:
+            print("Library Books:")
+            for book in self.books:
+                print(f"Title: {book.title}, Author Name: {book.authorName}, ISBN Number: {book.isbn}")
+
+def main():
+    library = Library()
+
+    while True:
+        print("\n-----Library Management System-----\n")
+        print("Press 1 to Add Book")
+        print("Press 2 to Display Books")
+        print("Press 3 to Quit")
+
+        choice = input("Enter your choice : ")
+
+        if choice == '1':
+            bookTitle = input("Enter the title of the book: ")
+            authorName = input("Enter the author of the book: ")
+            isbnNumber = input("Enter the ISBN of the book: ")
+            newBook = Book(bookTitle, authorName, isbnNumber)
+            library.addBook(newBook)
+            print("Book added successfully!")
+
+        elif choice == '2':
+            library.displayBooks()
+
+        elif choice == '3':
+            print("Exiting the Library Management System. Goodbye!")
+            break
+
+        else:
+            print("Invalid choice. Please enter 1, 2, or 3.")
+
+if __name__ == "__main__":
+    main()
